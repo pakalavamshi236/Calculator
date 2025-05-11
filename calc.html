@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial;
+    }
+
+    .calculator {
+      display: inline-block;
+      border: 2px solid #333;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    #display {
+      width: 100%;
+      font-size: 24px;
+      margin-bottom: 10px;
+      padding: 10px;
+      text-align: right;
+    }
+
+    .btn {
+      width: 60px;
+      height: 60px;
+      font-size: 22px;
+      margin: 5px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simple Calculator</h1>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+
+    <div class="row">
+      <button class="btn" onclick="press('7')">7</button>
+      <button class="btn" onclick="press('8')">8</button>
+      <button class="btn" onclick="press('9')">9</button>
+      <button class="btn" onclick="press('/')">/</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('4')">4</button>
+      <button class="btn" onclick="press('5')">5</button>
+      <button class="btn" onclick="press('6')">6</button>
+      <button class="btn" onclick="press('')"></button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('1')">1</button>
+      <button class="btn" onclick="press('2')">2</button>
+      <button class="btn" onclick="press('3')">3</button>
+      <button class="btn" onclick="press('-')">-</button>
+    </div>
+    <div class="row">
+      <button class="btn" onclick="press('0')">0</button>
+      <button class="btn" onclick="press('.')">.</button>
+      <button class="btn" onclick="calculate()">=</button>
+      <button class="btn" onclick="press('+')">+</button>
+    </div>
+    <div class="row">
+      <button class="btn" style="width: 250px;" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script>
+    function press(val) {
+      document.getElementById('display').value += val;
+    }
+
+    function calculate() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (e) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+  </script>
+
+</body>
+</html>
